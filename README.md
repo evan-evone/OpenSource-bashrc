@@ -38,6 +38,15 @@ to your copy of the repository.
 Also, be sure to include the complete path to all of the files, otherwise the
 linkage may not work.
 
+You should also stop your copy of **.personalrc** from being tracked:
+
+```bash
+$ git rm --cached .personalrc
+$ git commit -m "Stop tracking .personalrc"
+```
+
+Be sure to be in you git repository while doing this.
+
 ### Congratulations!
 
 If you followed the above steps correctly, you should now have a **.bash_profile**,
