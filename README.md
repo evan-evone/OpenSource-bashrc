@@ -41,7 +41,7 @@ linkage may not work.
 You should also stop your copy of **.personalrc** from being tracked:
 
 ```bash
-$ git rm --cached .personalrc
+$ git update-index --assume-unchanged .personalrc 
 $ git commit -m "Stop tracking .personalrc"
 ```
 
