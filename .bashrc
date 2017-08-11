@@ -10,11 +10,11 @@ function program {
     else x="null"; fi
     
     if [ "$x" == "python" ]; then
-   	  touch $2
-   	  chmod +x $2
-   	  echo '#!/usr/bin/env python' >> $2
-   	  echo '' >> $2
-   	  echo '' >> $2
+   	    touch $2
+   	    chmod +x $2
+   	    echo '#!/usr/bin/env python' >> $2
+   	    echo '' >> $2
+   	    echo '' >> $2
     elif [ "$x" == "html" ]; then
         touch $2
         chmod +x $2
@@ -26,11 +26,11 @@ function program {
         chmod +x $2
         echo '#!/usr/bin/env bash' >> $2
         echo '' >> $2
-   	  echo '' >> $2
+   	    echo '' >> $2
     else
-   	  touch $1
-   	  chmod +x $1
-   fi
+   	    touch $1
+   	    chmod +x $1
+    fi
 }
 
   # Shortcut to edit different types of files w/ different options
@@ -68,8 +68,6 @@ alias reset="reset; source ~/.bashrc"
 
 export PS1='\W >> '
 export PS2='\W .. '
-
-# Git Stuff (PS1 & 2 above also)
 
 x=$(which git) # Only if git is installed
 if [ "$x" ]; then
