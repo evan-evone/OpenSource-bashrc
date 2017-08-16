@@ -60,7 +60,14 @@ function myvim {
     fi
 }
 
-function findFile { find ~ -name "$1" -print 2>&1 | fgrep -v "Permission denied"; }
+function findFile {
+    if [ "$1" == "-d" ]; then
+        find $2 -name "$3" -print 2>&1 | fgrep -v "Pemission denied";
+    else
+        find ~ -name "$1" -print 2>&1 | fgrep -v "Permission denied";
+    fi    
+}
+function ip { ifconfig | grep "netmask" | grep -v "127.0.0.1"; }
 
 alias hy="history"
 alias alt="ls -lhAG"
