@@ -11,6 +11,8 @@ At the very end of the **.bashrc**, there is the line `source ~/.personalrc`.
 This is included, along with a blank **.personalrc** to allow users to
 load information on startup that they do not want released to the main **.bashrc**.
 
+Similarly, a blank **.vimdefault** file is included that is used for `myvim`.
+
 The recommended method for making this **.bashrc** your own is to link this **.bashrc**
 and **.bash_profile** files to the `$HOME` directory, after removing the originals. That way,
 any update to either instance of the file will affect both copies of the file.
@@ -23,9 +25,13 @@ To set up the files, type these commands:
 $ if [ -f ~/.bash_profile ]; then rm ~/.bash_profile; fi
 $ if [ -f ~/.bashrc ]; then rm ~/.bashrc; fi
 $ if [ -f ~/.personalrc ]; then rm ~/.personalrc; fi
+$ if [ -f ~/.vimdefault ]; then rm ~/.vimdefault; fi
+
 $ ln -s <path-to-repo>/.bash_profile ~
 $ ln -s <path-to-repo>/.bashrc ~
 $ ln -s <path-to-repo>/.personalrc ~
+$ ln -s <path-to-repo>/.vimdefault ~
+
 $ source ~/.bash_profile
 ```
 
@@ -38,11 +44,12 @@ to your copy of the repository.
 Also, be sure to include the complete path to all of the files, otherwise the
 linkage may not work.
 
-You should also stop your copy of **.personalrc** from being tracked:
+You should also stop your copies of **.personalrc** and **.vimdefault** from being tracked:
 
 ```bash
 $ git update-index --assume-unchanged .personalrc 
-$ git commit -m "Stop tracking .personalrc"
+$ git update-index --assume-unchanged .vimdefault
+$ git commit -m "Stop tracking .personalrc and .vimdefault"
 ```
 
 Be sure to be in you git repository while doing this.
@@ -50,6 +57,7 @@ Be sure to be in you git repository while doing this.
 ### Congratulations!
 
 If you followed the above steps correctly, you should now have a **.bash_profile**,
-**.bashrc**, and **.personalrc** that you can link to all of you computers, and if you `git fetch`
-frequently in this directory, your **.bash_profile** and **.bashrc** will stay
-up-to-date with any updates to this main repository's **.bashrc**.
+**.bashrc**,  **.personalrc**, and **.vimdefault** that you can link to all of your
+computers, and if you `git fetch` frequently in this directory, your **.bash_profile**
+and **.bashrc** will stay up-to-date with any updates to this remote repository's
+**.bashrc**.
