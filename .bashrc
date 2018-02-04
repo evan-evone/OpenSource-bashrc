@@ -1,4 +1,3 @@
-
 # BASH / UNIX Stuff
 
   # Shortcut to start new scripts, make executeable, etc.
@@ -7,26 +6,37 @@ function program {
     elif [ "$1" == "-py" ]; then x="python";
     elif [ "$1" == "--html" ]; then x="html";
     elif [ "$1" == "--bash" ]; then x="bash";
+    elif [ "$1" == "-sh" ]; then x="bash";
+    elif [ "$1" == "-cpp" ]; then x="c++";
     else x="null"; fi
-    
+
     if [ "$x" == "python" ]; then
         touch $2
         chmod +x $2
-        echo '#!/usr/bin/env python' >> $2
-        echo '' >> $2
-        echo '' >> $2
-    elif [ "$x" == "html" ]; then
-        touch $2
-        chmod +x $2
-        echo '<!DOCTYPE html>' >> $2
-        echo '<html>' >> $2
-        echo '</html>' >> $2
+        echo "#!/usr/bin/env python" >> $2
+        echo "" >> $2
     elif [ "$x" == "bash" ]; then
         touch $2
         chmod +x $2
-        echo '#!/usr/bin/env bash' >> $2
-        echo '' >> $2
-        echo '' >> $2
+        echo "#!/usr/bin/env bash" >> $2
+        echo "" >> $2
+    elif [ "$x" == "html" ]; then
+        touch $2
+        chmod +x $2
+        echo "<!DOCTYPE html>" >> $2
+        echo "<html>" >> $2
+        echo "</html>" >> $2
+    elif [ "$x" == "c++" ]; then
+        touch $2
+        touch ${2%.*}.o
+        chmod +x ${2%.*}.o
+        echo "#include <iostream>" >> $2
+        echo "using namespace std;" >> $2
+        echo "int main()" >> $2
+        echo "{" >> $2
+        echo "" >> $2
+        echo "  return 0;" >> $2
+        echo "}" >> $2
     else
         touch $1
         chmod +x $1
@@ -39,34 +49,40 @@ function myvim {
     elif [ "$1" == "-py" ]; then x="python";
     elif [ "$1" == "--html" ]; then x="html";
     elif [ "$1" == "--bash" ]; then x="bash";
+    elif [ "$1" == "-md" ]; then x="markdown";
     else x="null"; fi
-   
+
     if [ "$x" == "python" ] || [ "$x" == "bash" ]; then
-        vim --cmd ':syntax on 
-            set tabstop=4 
-            set softtabstop=4 
-            set shiftwidth=4
-            set expandtab
-            set autoindent' $2
+        vim --cmd ':syntax on
+                    set tabstop=4
+                    set softtabstop=4
+                    set shiftwidth=4
+                    set expandtab
+                    set autoindent' $2
+    elif [ "$x" == "markdown" ]; then
+        vim --cmd 'syntax off
+                    set tabstop=4
+                    set softtabstop=4
+                    set shiftwidth=4
+                    set expandtab
+                    set autoindent' $2
     elif [ "$x" == "html" ]; then
-        vim --cmd ':syntax on 
-            set tabstop=2
-            set softtabstop=2 
-            set shiftwidth=2
-            set expandtab
-            set autoindent' $2
+        vim --cmd ':syntax on
+                    set tabstop=2
+                    set softtabstop=2
+                    set shiftwidth=2
+                    set expandtab
+                    set autoindent' $2
     else
-        vim --cmd ':source ~/.vimdefault' $1
+        vim --cmd ':set tabstop=4
+                    set softtabstop=4
+                    set shiftwidth=4
+                    set expandtab' $1
     fi
 }
 
-function findFile {
-    if [ "$1" == "-d" ]; then
-        find $2 -name "$3" -print 2>&1 | fgrep -v "Pemission denied";
-    else
-        find ~ -name "$1" -print 2>&1 | fgrep -v "Permission denied";
-    fi    
-}
+function findFile { find $1 -name "$2" -print 2>&1 | fgrep -v "Permission denied"; }
+
 function ip { ifconfig | grep "netmask" | grep -v "127.0.0.1"; }
 
 alias hy="history"
@@ -76,20 +92,39 @@ alias reset="reset; source ~/.bashrc"
 export PS1='\W >> '
 export PS2='\W .. '
 
-x=$(which git) # Only if git is installed
-if [ "$x" ]; then
+if [ -f '~/Google Drive File Stream' ]; then
+    mv '~/Google Drive File Stream' ~/GoogleDrive;
+fi
 
-    export PS1='($(__git_ps1)) \W >> ' 
-    export PS2='($(__git_ps1)) \W .. '
-    
-    alias "__git_ps1"="git branch 2>&1 | grep -v 'fatal' | grep \*"
+if [ "$(which git)" ]; then
+
     alias "gitLog"="git log --oneline --graph --decorate --all"
        # can be done with git config, but one-word version is convenient
-   
-    if [ -f ~/.git-completion.bash ]; then
-        source ~/.git-completion.bash
+
+    if [ -f ~/.git-completion.sh ]; then
+        source ~/.git-completion.sh
         echo 'git completion commands loaded'
     fi;
- fi
 
-source ~/.personalrc
+    if [ -f ~/.git-prompt.sh ]; then
+      source ~/.git-prompt.sh
+      export PS1='$(__git_ps1 "(%s) ")\W >> '
+      export PS2='$(__git_ps1 "(%s) ")\W .. '
+      echo 'git prompt loaded'
+    fi;
+ fi;
+
+# Python Paths
+export PATH="$HOME/anaconda3/:$HOME/anaconda3/bin/:$PATH"
+export PYTHONPATH="$HOME/anaconda3/mypkgs/:$PYTHONPATH"
+
+# Updates
+
+wd=$(ls -lhAG ~/.bashrc | awk '{print $NF}')
+wd=${wd%/*}/
+cd $wd
+git fetch
+if [ "$(git df origin/master)" ]; then echo "git: OpenSource-bashrc differs from origin/master"; fi
+cd $HOME
+
+echo 'Hello, Evan'
