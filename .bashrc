@@ -124,7 +124,9 @@ wd=$(ls -lhAG ~/.bashrc | awk '{print $NF}')
 wd=${wd%/*}/
 cd $wd
 git fetch
-if [ "$(git df origin/master)" ]; then echo "git: OpenSource-bashrc differs from origin/master"; fi
+if [ "$(git df origin/master)" ]
+  then echo "git: OpenSource-bashrc differs from origin/master"
+fi
 cd $HOME
 
 echo 'Hello, Evan'
