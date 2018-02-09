@@ -120,13 +120,8 @@ export PYTHONPATH="$HOME/anaconda3/mypkgs/:$PYTHONPATH"
 
 # Updates
 
-wd=$(ls -lhAG ~/.bashrc | awk '{print $NF}')
-wd=${wd%/*}/
-cd $wd
-git fetch
-if [ "$(git df origin/master)" ]
-  then echo "git: OpenSource-bashrc differs from origin/master"
-fi
-cd $HOME
+wd="$(ls -lhAG ~/.bashrc | awk '{print $NF}')"
+wd="${wd%/*}/"
+$wd/fetch.sh "$wd"
 
 echo 'Hello, Evan'
