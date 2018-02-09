@@ -6,7 +6,7 @@ if [ "$?" == "0" ]; then
   cd $1
   git fetch
   if [ "$(git df origin/master)" ]
-    then echo "git: OpenSource-bashrc differs from origin/master"
+    then echo "git: .bashrc differs"
   fi
   cd $HOME
 fi
