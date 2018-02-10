@@ -114,9 +114,14 @@ if [ "$(which git)" ]; then
     fi;
  fi;
 
-# Python Paths
+# Python
 export PATH="$HOME/anaconda3/:$HOME/anaconda3/bin/:$PATH"
 export PYTHONPATH="$HOME/anaconda3/mypkgs/:$PYTHONPATH"
+function jupyter-kill {
+  if [ $(ps -ax | grep jupyter | grep -v grep | awk '{print $1}') ]; then
+    kill $(ps -ax | grep jupyter | grep -v grep | awk '{print $1}');
+  fi
+}
 
 # Updates
 
