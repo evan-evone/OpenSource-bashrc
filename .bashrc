@@ -96,6 +96,8 @@ if [ -f '~/Google Drive File Stream' ]; then
     mv '~/Google Drive File Stream' ~/GoogleDrive;
 fi
 
+# Git Stuff
+
 if [ "$(which git)" ]; then
 
     alias "gitLog"="git log --oneline --graph --decorate --all"
@@ -112,6 +114,12 @@ if [ "$(which git)" ]; then
       export PS2='$(__git_ps1 "(%s) ")\W .. '
       echo 'git prompt loaded'
     fi;
+
+    # Updates
+
+    wd="$(ls -lhAG ~/.bashrc | awk '{print $NF}')"
+    wd="${wd%/*}/"
+    $wd/fetch.sh "$wd"
  fi;
 
 # Python
@@ -122,11 +130,5 @@ function jupyter-kill {
     kill $(ps -ax | grep jupyter | grep -v grep | awk '{print $1}');
   fi
 }
-
-# Updates
-
-wd="$(ls -lhAG ~/.bashrc | awk '{print $NF}')"
-wd="${wd%/*}/"
-$wd/fetch.sh "$wd"
 
 echo 'Hello, Evan'
