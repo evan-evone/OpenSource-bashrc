@@ -89,6 +89,14 @@ alias hy="history"
 alias alt="ls -lhAG"
 alias reset="reset; source ~/.bashrc"
 
+alias brainf="brainfuck"
+
+if [ "$(which atom)" ] && [ "$(which apm)"]; then
+  alias atom-beta="atom"; alias apm-beta="apm"
+else
+  alias atom="atom-beta"; alias apm="apm-beta"
+fi
+
 export PS1='\W >> '
 export PS2='\W .. '
 
