@@ -91,9 +91,9 @@ alias reset="reset; source ~/.bashrc"
 
 alias brainf="brainfuck"
 
-if [ "$(which atom)" ] && [ "$(which apm)"]; then
+if [ "$(which atom)" ] && [ "$(which apm)" ]; then
   alias atom-beta="atom"; alias apm-beta="apm"
-else
+elif [ "$(which atom-beta)" ] && [ "$(which apm-beta)" ]; then
   alias atom="atom-beta"; alias apm="apm-beta"
 fi
 
