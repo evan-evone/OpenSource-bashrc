@@ -9,6 +9,8 @@ if [ "$?" == "0" ]; then
   if [ "$(git df origin/master)" ]
     then echo "git: .bashrc differs"
   fi
+else
+  echo "PING failure"
 fi
 
 cd $HOME
