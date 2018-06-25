@@ -2,7 +2,7 @@
 
 cd $1
 
-ping -q -c 1 github.com 2>.ping_output 1>.ping_output
+ping -q -c 1 github.com 2>/dev/null 1>/dev/null
 
 if [ "$?" == "0" ]; then
   git fetch
