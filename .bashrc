@@ -4,6 +4,10 @@
 function program {
     if [ "$1" == "--python" ]; then x="python";
     elif [ "$1" == "-py" ]; then x="python";
+    elif [ "$1" == "--javascript" ]; then x="javascript";
+    elif [ "$1" == "-js" ]; then x="javascript";
+    elif [ "$1" == "--node" ]; then x="javascript";
+    elif [ "$1" == "-n" ]; then x="javascript";
     elif [ "$1" == "--html" ]; then x="html";
     elif [ "$1" == "--bash" ]; then x="bash";
     elif [ "$1" == "-sh" ]; then x="bash";
@@ -11,32 +15,37 @@ function program {
     else x="null"; fi
 
     if [ "$x" == "python" ]; then
-        touch $2
-        chmod +x $2
-        echo "#!/usr/bin/env python" >> $2
-        echo "" >> $2
+        touch "$2"
+        chmod +x "$2"
+        echo "#!/usr/bin/env python" >> "$2"
+        echo "" >> "$2"
+    elif [ "$x" == "javascript" ]; then
+        touch "$2"
+        chmod +x "$2"
+        echo "#!/usr/bin/env node" >> "$2"
+        echo "" >> "$2"
     elif [ "$x" == "bash" ]; then
-        touch $2
-        chmod +x $2
-        echo "#!/usr/bin/env bash" >> $2
-        echo "" >> $2
+        touch "$2"
+        chmod +x "$2"
+        echo "#!/usr/bin/env bash" >> "$2"
+        echo "" >> "$2"
     elif [ "$x" == "html" ]; then
-        touch $2
-        chmod +x $2
-        echo "<!DOCTYPE html>" >> $2
-        echo "<html>" >> $2
-        echo "</html>" >> $2
+        touch "$2"
+        chmod +x "$2"
+        echo "<!DOCTYPE html>" >> "$2"
+        echo "<html>" >> "$2"
+        echo "</html>" >> "$2"
     elif [ "$x" == "c++" ]; then
-        touch $2
+        touch "$2"
         touch ${2%.*}.o
         chmod +x ${2%.*}.o
-        echo "#include <iostream>" >> $2
-        echo "using namespace std;" >> $2
-        echo "int main()" >> $2
-        echo "{" >> $2
-        echo "" >> $2
-        echo "  return 0;" >> $2
-        echo "}" >> $2
+        echo "#include <iostream>" >> "$2"
+        echo "using namespace std;" >> "$2"
+        echo "int main()" >> "$2"
+        echo "{" >> "$2"
+        echo "" >> "$2"
+        echo "  return 0;" >> "$2"
+        echo "}" >> "$2"
     else
         touch $1
         chmod +x $1
