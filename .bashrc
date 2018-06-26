@@ -113,6 +113,11 @@ if [ -f '~/Google Drive File Stream' ]; then
     mv '~/Google Drive File Stream' ~/GoogleDrive;
 fi
 
+if [ -d "/Users/evan/Public/.atom" ]; then
+  rsync -a "/Users/evan/Public/.atom/" "$HOME/.atom/"
+  if [ "$?" == "0" ]; then echo "Folder synced: .atom"; fi
+fi
+
 # Git Stuff
 
 if [ "$(which git)" ]; then
