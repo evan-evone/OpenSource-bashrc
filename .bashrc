@@ -109,8 +109,8 @@ fi
 export PS1='\W >> '
 export PS2='\W .. '
 
-if [ -f '~/Google Drive File Stream' ]; then
-    mv '~/Google Drive File Stream' ~/GoogleDrive;
+if [ -f "$HOME/Google Drive File Stream" ]; then
+  mv "$HOME/Google Drive File Stream" $HOME/GoogleDrive;
 fi
 
 if [ -d "/Users/evan/Public/.atom" ]; then
