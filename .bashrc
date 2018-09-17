@@ -118,6 +118,10 @@ if [ -d "/Users/evan/Public/.atom" ]; then
   if [ "$?" == "0" ]; then echo "Folder synced: .atom"; fi
 fi
 
+if [ -d "$HOME/Applications/usr/local/bin" ]; then
+  export PATH="$HOME/Applications/usr/local/bin:$PATH"
+fi
+
 # Git Stuff
 
 if [ "$(which git)" ]; then
