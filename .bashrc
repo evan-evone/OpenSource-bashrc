@@ -113,11 +113,6 @@ if [ -f "$HOME/Google Drive File Stream" ]; then
   mv "$HOME/Google Drive File Stream" $HOME/GoogleDrive;
 fi
 
-if [ -d "/Users/evan/Public/.atom" ]; then
-  rsync -a "/Users/evan/Public/.atom/" "$HOME/.atom/"
-  if [ "$?" == "0" ]; then echo "Folder synced: .atom"; fi
-fi
-
 if [ -d "$HOME/Applications/usr/local/bin" ]; then
   export PATH="$HOME/Applications/usr/local/bin:$PATH"
 fi
