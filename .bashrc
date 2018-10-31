@@ -52,47 +52,9 @@ function program {
     fi
 }
 
-  # Shortcut to edit different types of files w/ different options
-function myvim {
-    if [ "$1" == "--python" ]; then x="python";
-    elif [ "$1" == "-py" ]; then x="python";
-    elif [ "$1" == "--html" ]; then x="html";
-    elif [ "$1" == "--bash" ]; then x="bash";
-    elif [ "$1" == "-md" ]; then x="markdown";
-    else x="null"; fi
-
-    if [ "$x" == "python" ] || [ "$x" == "bash" ]; then
-        vim --cmd ':syntax on
-                    set tabstop=4
-                    set softtabstop=4
-                    set shiftwidth=4
-                    set expandtab
-                    set autoindent' $2
-    elif [ "$x" == "markdown" ]; then
-        vim --cmd 'syntax off
-                    set tabstop=4
-                    set softtabstop=4
-                    set shiftwidth=4
-                    set expandtab
-                    set autoindent' $2
-    elif [ "$x" == "html" ]; then
-        vim --cmd ':syntax on
-                    set tabstop=2
-                    set softtabstop=2
-                    set shiftwidth=2
-                    set expandtab
-                    set autoindent' $2
-    else
-        vim --cmd ':set tabstop=4
-                    set softtabstop=4
-                    set shiftwidth=4
-                    set expandtab' $1
-    fi
-}
-
 function findFile { find $1 -name "$2" -print 2>&1 | fgrep -v "Permission denied"; }
 
-function ip { dig $HOSTNAME +short; }
+function ip { ipconfig getifaddr en0; }
 
 alias hy="history"
 alias la="ls -lhAG"
