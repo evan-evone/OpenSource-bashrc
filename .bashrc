@@ -92,7 +92,7 @@ function myvim {
 
 function findFile { find $1 -name "$2" -print 2>&1 | fgrep -v "Permission denied"; }
 
-function ip { dig $HOSTNAME +short; }
+function ip { ipconfig getifaddr en0; }
 
 alias hy="history"
 alias la="ls -lhAG"
