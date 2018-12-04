@@ -11,7 +11,7 @@ if [ "$?" == "0" ]; then
       then echo "git: .bashrc differs"
     fi
   else
-    echo "GitHub unavailable"
+    echo "Git Remote Unavailable"
   fi
 else
   echo "PING failure"
