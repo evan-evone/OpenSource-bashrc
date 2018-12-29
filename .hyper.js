@@ -83,7 +83,8 @@ module.exports = {
     "hyper-search",
     "hyper-fading-scrollbar",
     "hyper-tabs-enhanced",
-    "verminal"
+    "verminal",
+    "hyper-pane"
   ],
 
   // in development, you can create a directory under
