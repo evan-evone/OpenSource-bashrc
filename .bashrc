@@ -115,3 +115,11 @@ function jupyter-kill {
 }
 
 echo 'Hello, Evan'
+
+# Experimental TI-84+CE Development
+export CEDEV="$HOME/CEdev"
+export PATH="$HOME/CEdev/bin:$PATH"
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[ -f /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.bash ] && . /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.bash
