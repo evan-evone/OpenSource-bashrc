@@ -83,7 +83,7 @@ fi
 
 if [ "$(which git)" ]; then
 
-    alias "gitLog"="git log --oneline --graph --decorate --all"
+    alias "gitLog"="git mylog"
        # can be done with git config, but one-word version is convenient
 
     if [ -f ~/.git-completion.sh ]; then
