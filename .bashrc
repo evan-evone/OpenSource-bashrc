@@ -76,7 +76,7 @@ if [ -f "$HOME/Google Drive File Stream" ]; then
 fi
 
 if [ -d "$HOME/Applications/usr/local/bin" ]; then
-  export PATH="$HOME/Applications/usr/local/bin:$PATH"
+  export PATH="$PATH:$HOME/Applications/usr/local/bin"
 fi
 
 # Git Stuff
@@ -102,11 +102,11 @@ if [ "$(which git)" ]; then
 
     wd="$(ls -lhAG ~/.bashrc | awk '{print $NF}')"
     wd="${wd%/*}/"
-    $wd/fetch.sh "$wd"
+    source $wd/fetch.sh "$wd"
  fi;
 
 # Python
-export PATH="$HOME/anaconda3/:$HOME/anaconda3/bin/:$PATH"
+export PATH="$PATH:$HOME/anaconda3/:$HOME/anaconda3/bin/:"
 export PYTHONPATH="$HOME/anaconda3/mypkgs/:$PYTHONPATH"
 function jupyter-kill {
   if [ $(ps -ax | grep jupyter | grep -v grep | awk '{print $1}') ]; then
@@ -118,7 +118,7 @@ echo 'Hello, Evan'
 
 # Experimental TI-84+CE Development
 export CEDEV="$HOME/CEdev"
-export PATH="$HOME/CEdev/bin:$PATH"
+export PATH="$PATH:$HOME/CEdev/bin"
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
