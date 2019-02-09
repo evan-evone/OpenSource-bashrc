@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+wd="$(pwd)"
 cd $1
 
 ping -q -c 1 -t 2 github.com 2>/dev/null 1>/dev/null
@@ -20,4 +21,4 @@ if [ "$(git diff origin/$(git rev-parse --abbrev-ref HEAD))" ]; then
     echo "git: .bashrc differs"
 fi
 
-cd $HOME
+cd "$wd"
