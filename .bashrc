@@ -106,8 +106,11 @@ if [ "$(which git)" ]; then
  fi;
 
 # Python
-export PATH="$PATH:$HOME/anaconda3/:$HOME/anaconda3/bin/:"
+export PATH="$PATH:$HOME/anaconda3/:$HOME/anaconda3/bin/"
 export PYTHONPATH="$HOME/anaconda3/mypkgs/:$PYTHONPATH"
+if [ "$(python -V 2>&1)" == "Python 2.7.10" ]; then
+    alias python='python3'
+fi
 function jupyter-kill {
   if [ $(ps -ax | grep jupyter | grep -v grep | awk '{print $1}') ]; then
     kill $(ps -ax | grep jupyter | grep -v grep | awk '{print $1}');
