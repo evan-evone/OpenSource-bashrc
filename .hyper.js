@@ -4,7 +4,7 @@
 
 module.exports = {
   config: {
-    updateChannel: 'stable',
+    updateChannel: 'canary',
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
 
