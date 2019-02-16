@@ -2,7 +2,7 @@
 
   # Reset PATH variable to initial value
 
-export PATH="$(getconf PATH)"
+export PATH="$(getconf PATH):/usr/local/bin"
 
   # Shortcut to start new scripts, make executeable, etc.
 function program {
