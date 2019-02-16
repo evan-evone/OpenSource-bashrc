@@ -59,6 +59,7 @@ function ip { ipconfig getifaddr en0; }
 alias hy="history"
 alias la="ls -lhAG"
 alias reset="reset; source ~/.bashrc"
+alias view='vim --cmd "set noma"'
 
 alias brainf="brainfuck"
 
