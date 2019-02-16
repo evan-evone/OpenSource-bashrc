@@ -1,5 +1,9 @@
 # BASH / UNIX Stuff
 
+  # Reset PATH variable to initial value
+
+export PATH="$(getconf PATH)"
+
   # Shortcut to start new scripts, make executeable, etc.
 function program {
     if [ "$1" == "--python" ]; then x="python";
