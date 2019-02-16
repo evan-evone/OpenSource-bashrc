@@ -2,7 +2,9 @@
 
   # Reset PATH variable to initial value
 
-export PATH="$(getconf PATH):/usr/local/bin"
+export PATH="$(getconf PATH)"
+export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/local/texlive/2017/bin/x86_64-darwin"
 
   # Shortcut to start new scripts, make executeable, etc.
 function program {
