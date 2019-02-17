@@ -25,9 +25,18 @@ module.exports = {
     selectionColor: 'rgba(172,213,255,0.3)',
     borderColor: '#333',
 
-    css: '',                                                                                // custom CSS to embed in the main window
+    // custom CSS to embed in the main window
+    // NOTE: "hyperline" div has class `jsx-1196914242` `line`
+    css: `
+      .line.jsx-1196914242 {
+        font: 11px monospace;
+        height: 30px;
+        justify-content: space-around;
+      }
+    `,
+
     termCSS: '',                                                                            // custom CSS to embed in the terminal window
-    padding: '12px 14px',
+    padding: '12px 14px 37px',                                                              // last padding - 37 - accounts for "hyperline"
     windowSize: [848, 536],
 
     showHamburgerMenu: '',                                                                  // default: `true` on Linux, `true` on Windows, ignored on macOS
@@ -60,6 +69,17 @@ module.exports = {
       backgroundColor: 'rgba(0, 0, 0, 0.25)'
     },
 
+    hyperline: {
+        plugins: [
+            "hostname",
+            "ip",
+            "memory",
+            "cpu",
+            "network",
+            "battery",
+        ],
+    },
+
     shell: '',
     shellArgs: ['--login'],
     env: {},
@@ -84,7 +104,8 @@ module.exports = {
     "hyper-fading-scrollbar",
     "hyper-tabs-enhanced",
     "verminal",
-    "hyper-pane"
+    "hyper-pane",
+    "hyperline"
   ],
 
   // in development, you can create a directory under
