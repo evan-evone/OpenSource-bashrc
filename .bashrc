@@ -75,8 +75,13 @@ elif [ "$(which atom-beta)" ] && [ "$(which apm-beta)" ]; then
   alias atom="atom-beta"; alias apm="apm-beta"
 fi
 
-export PS1='\W >> '
-export PS2='\W .. '
+# here, we define the basic prompt, which shows directory name
+export PS1="\W >> "
+export PS2="\W .. "
+
+# here, we add onto the promt with an escape sequence to set title
+export PS1="\[\033]0;\W\007\]$PS1"
+export PS2="\[\033]0;\W\007\]$PS2"
 
 if [ -f "$HOME/Google Drive File Stream" ]; then
   mv "$HOME/Google Drive File Stream" $HOME/GoogleDrive;
@@ -100,8 +105,8 @@ if [ "$(which git)" ]; then
 
     if [ -f ~/.git-prompt.sh ]; then
       source ~/.git-prompt.sh
-      export PS1='$(__git_ps1 "(%s) ")\W >> '
-      export PS2='$(__git_ps1 "(%s) ")\W .. '
+      export PS1='$(__git_ps1 "(%s) ")'$PS1
+      export PS2='$(__git_ps1 "(%s) ")'$PS2
       echo 'git prompt loaded'
     fi;
 

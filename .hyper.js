@@ -33,6 +33,10 @@ module.exports = {
         height: 30px;
         justify-content: space-around;
       }
+      header {
+        background-color: rgba(0, 0, 0, 0.08);
+        border-color: rgba(0, 0, 0, 0.08);
+      }
     `,
 
     termCSS: '',                                                                            // custom CSS to embed in the terminal window
@@ -62,11 +66,6 @@ module.exports = {
       lightMagenta: '#FD7CFC',
       lightCyan: '#00E7E7',
       lightWhite: '#FFFFFF',
-    },
-
-    verminal: {
-      fontFamily: 'Menlo',
-      backgroundColor: 'rgba(0, 0, 0, 0.25)'
     },
 
     hyperline: {
@@ -103,9 +102,9 @@ module.exports = {
     "hyper-search",
     "hyper-fading-scrollbar",
     "hyper-tabs-enhanced",
-    "verminal",
     "hyper-pane",
-    "hyperline"
+    "hyperline",
+    "hyper-one-dark"
   ],
 
   // in development, you can create a directory under
