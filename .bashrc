@@ -8,8 +8,10 @@ export PATH="$PATH:/usr/local/texlive/2017/bin/x86_64-darwin"
 
   # Shortcut to start new scripts, make executeable, etc.
 function program {
-    if [ "$1" == "--python" ]; then x="python";
-    elif [ "$1" == "-py" ]; then x="python";
+    if [ "$1" == "--python" ]; then x="python3";
+    elif [ "$1" == "--python3" ]; then x="python3";
+    elif [ "$1" == "--python2" ]; then x="python2"
+    elif [ "$1" == "-py" ]; then x="python3";
     elif [ "$1" == "--javascript" ]; then x="javascript";
     elif [ "$1" == "-js" ]; then x="javascript";
     elif [ "$1" == "--node" ]; then x="javascript";
@@ -20,7 +22,12 @@ function program {
     elif [ "$1" == "-cpp" ]; then x="c++";
     else x="null"; fi
 
-    if [ "$x" == "python" ]; then
+    if [ "$x" == "python3" ]; then
+        touch "$2"
+        chmod +x "$2"
+        echo "#!/usr/bin/env python3" >> "$2"
+        echo "" >> "$2"
+    elif [ "$x" == "python2" ]; then
         touch "$2"
         chmod +x "$2"
         echo "#!/usr/bin/env python" >> "$2"
